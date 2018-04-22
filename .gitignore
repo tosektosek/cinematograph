@@ -64,6 +64,7 @@ yarn-error.log
 *.ipr
 *.iws
 *.jar
+!gradle/**/*.jar
 *.sw?
 *~
 .#*

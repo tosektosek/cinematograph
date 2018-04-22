@@ -1,5 +1,6 @@
 package com.cinematograph.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,7 +25,8 @@ public class Actor {
 
     private String lastName;
 
-    @DBRef
+    @DBRef(lazy = true)
+    @JsonIgnoreProperties("actors")
     private Set<Movie> movies;
 
     private Double rating;

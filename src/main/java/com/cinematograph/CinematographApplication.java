@@ -4,10 +4,12 @@ import com.cinematograph.domain.Actor;
 import com.cinematograph.domain.Movie;
 import com.cinematograph.repository.ActorRepository;
 import com.cinematograph.repository.MovieRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -25,6 +27,7 @@ public class CinematographApplication implements CommandLineRunner{
 	@Autowired
 	ActorRepository actorRepository;
 	@Override
+	@Transactional
 	public void run(String... args) throws Exception {
 		Actor actor = Actor.builder()
 				.firstName("Leonardo")
@@ -45,6 +48,8 @@ public class CinematographApplication implements CommandLineRunner{
 		movies.add(movie);
 		actor.setMovies(movies);
 
+		movieRepository.deleteAll();
+		actorRepository.deleteAll();
 		movieRepository.save(movie);
 		actorRepository.save(actor);
 	}

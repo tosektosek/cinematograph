@@ -1,5 +1,7 @@
 package com.cinematograph.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,13 +33,16 @@ public class Movie {
 
     private LocalDate releaseDate;
 
-    @DBRef
+    @DBRef(lazy = true)
+    @JsonIgnoreProperties("movies")
     private Set<Actor> actors;
 
-    @DBRef
+    @DBRef(lazy = true)
+    @JsonIgnoreProperties("movies")
     private Set<Director> directors;
 
-    @DBRef
+    @DBRef(lazy = true)
+    @JsonIgnoreProperties("movies")
     private Set<Writer> writers;
 
     private String imgURL;
