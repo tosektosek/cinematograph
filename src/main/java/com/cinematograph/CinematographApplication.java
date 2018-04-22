@@ -34,12 +34,16 @@ public class CinematographApplication implements CommandLineRunner{
 
 		Set<Actor> actors = new HashSet<>();
 		actors.add(actor);
+		actorRepository.save(actor);
 		Movie movie = Movie.builder()
 				.title("Inception")
 				.releaseDate(LocalDate.of(2012, 4, 22))
 				.rating(10.0)
 				.actors(actors)
 				.build();
+		Set<Movie> movies = new HashSet<>();
+		movies.add(movie);
+		actor.setMovies(movies);
 
 		movieRepository.save(movie);
 		actorRepository.save(actor);
