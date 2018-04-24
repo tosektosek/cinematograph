@@ -1,11 +1,6 @@
 pipeline {
   agent any
   stages {
-    stage('checkout') {
-      steps {
-        git(url: 'https://github.com/tosektosek/cinematograph', branch: 'master')
-      }
-    }
     stage('compiling, test, packaging') {
       steps {
         bat 'gradle clean build'
