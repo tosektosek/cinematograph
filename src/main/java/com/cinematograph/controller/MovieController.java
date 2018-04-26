@@ -2,20 +2,12 @@ package com.cinematograph.controller;
 
 import com.cinematograph.domain.Movie;
 import com.cinematograph.repository.MovieRepository;
-import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
-
-import static org.springframework.data.mongodb.core.query.Criteria.where;
-import static org.springframework.data.mongodb.core.query.Query.query;
-import static org.springframework.data.mongodb.core.query.Update.update;
 
 @RestController
+@RequestMapping("/movie")
 public class MovieController {
 
     private final MovieRepository movieRepository;

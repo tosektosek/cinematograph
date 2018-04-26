@@ -29,7 +29,7 @@ public class Writer {
     @JsonIgnoreProperties("writers")
     private Set<Movie> movies;
 
-    private Double rating;
+    private Double mark;
 
     private String imgURL;
 }

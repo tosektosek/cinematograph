@@ -26,9 +26,19 @@ public class Movie {
 
     private Set<String> genres;
 
-    private Double rating;
-
     private LocalDate releaseDate;
+
+    private String imgURL;
+
+    private Double visualEffectsMark;
+
+    private Double actingMark;
+
+    private Double plotMark;
+
+    private Double musicMark;
+
+    private Double mark;
 
     @DBRef(lazy = true)
     @JsonIgnoreProperties("movies")
@@ -42,7 +52,7 @@ public class Movie {
     @JsonIgnoreProperties("movies")
     private Set<Writer> writers;
 
-    private String imgURL;
+
 
 
 }

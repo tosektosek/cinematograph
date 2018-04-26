@@ -32,7 +32,7 @@ public class CinematographApplication implements CommandLineRunner {
         Actor actor = Actor.builder()
                 .firstName("Leonardo")
                 .lastName("DiCaprio")
-                .rating(7.0)
+                .mark(7.0)
                 .build();
 
         Set<Actor> actors = new HashSet<>();
@@ -41,8 +41,10 @@ public class CinematographApplication implements CommandLineRunner {
         Movie movie = Movie.builder()
                 .title("Inception")
                 .releaseDate(LocalDate.of(2012, 4, 22))
-                .rating(10.0)
+                .mark(10.0)
                 .actors(actors)
+                .actingMark(9.5)
+                .imgURL("https://ia.media-imdb.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_UX182_CR0,0,182,268_AL_.jpg")
                 .build();
         Set<Movie> movies = new HashSet<>();
         movies.add(movie);
