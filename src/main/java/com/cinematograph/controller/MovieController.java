@@ -1,7 +1,7 @@
 package com.cinematograph.controller;
 
 import com.cinematograph.domain.Movie;
-import com.cinematograph.repository.MovieRepository;
+import com.cinematograph.service.MovieService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,35 +10,35 @@ import java.util.List;
 @RequestMapping("/movie")
 public class MovieController {
 
-    private final MovieRepository movieRepository;
+    private final MovieService movieService;
 
-    public MovieController(MovieRepository movieRepository) {
-        this.movieRepository = movieRepository;
-    }
-
-    @GetMapping
-    public List<Movie> getAllMovies() {
-        return movieRepository.findAll();
+    public MovieController(MovieService movieService) {
+        this.movieService = movieService;
     }
 
     @GetMapping("/{title}")
     public Movie getMovieByTitle(@PathVariable String title) {
-        return movieRepository.findByTitle(title);
+        return movieService.findByTitle(title);
+    }
+
+    @GetMapping("/random")
+    public List<Movie> getRandomMovie() {
+        return movieService.getRandom();
     }
 
     @PostMapping
-    public Movie  addMovie(@RequestBody Movie movie) {
-        return movieRepository.save(movie);
+    public Movie addMovie(@RequestBody Movie movie) {
+        return movieService.save(movie);
     }
 
     @PatchMapping("/{title}")
     public Movie updateMovie(@PathVariable String title, @RequestBody Movie movie) {
-        movie.setId(movieRepository.findByTitle(title).getId());
-        return movieRepository.save(movie);
+        movie.setId(movieService.findByTitle(title).getId());
+        return movieService.save(movie);
     }
 
     @DeleteMapping("/{id}")
     public void deleteMovie(@PathVariable String id) {
-        movieRepository.deleteById(id);
+        movieService.deleteById(id);
     }
 }

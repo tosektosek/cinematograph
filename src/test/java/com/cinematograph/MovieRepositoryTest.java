@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDate;
@@ -30,6 +31,9 @@ public class MovieRepositoryTest {
     @Mock
     private MovieRepository movieRepository;
 
+    @Mock
+    private MongoTemplate mongoTemplate;
+
     private MovieController movieController;
 
     private Movie movie;
@@ -37,7 +41,7 @@ public class MovieRepositoryTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        movieController = new MovieController(movieRepository);
+        movieController = new MovieController(movieRepository, mongoTemplate);
         movie = Movie.builder().title("Movie").build();
     }
 
